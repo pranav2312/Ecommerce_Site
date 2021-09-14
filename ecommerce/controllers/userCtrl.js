@@ -1,7 +1,7 @@
 const Users = require('../models/userModules')
 const bcrypt  = require('bcrypt')
 const jwt =  require('jsonwebtoken')
-
+const Payments = require('../models/paymentModel')
 const userCtrl = {
     register:async(req,res)=>{
         try{
@@ -24,7 +24,8 @@ const userCtrl = {
             const refreshtoken = createRefreshToken({id:newUser._id})
             res.cookie('refreshtoken',refreshtoken,{
                 httpOnly: true,
-                path: '/user/refresh_token'
+                path: '/user/refresh_token',
+                maxAge: 7*24*60*60*1000
             })
             res.json({accesstoken})
             //res.json({msg:"Register Success!"})
@@ -45,7 +46,8 @@ const userCtrl = {
             const refreshtoken = createRefreshToken({id:user._id})
             res.cookie('refreshtoken',refreshtoken,{
                 httpOnly: true,
-                path: '/user/refresh_token'
+                path: '/user/refresh_token',
+                maxAge: 7*24*60*60*1000
             })
             res.json({accesstoken})
             //res.json({msg:"login Success!"})
@@ -83,16 +85,37 @@ const userCtrl = {
     },
     getUser: async(req,res)=>{
         try{
-            const user = await Users.findById(req.user.id).select('password')
+            const user = await Users.findById(req.user.id).select('-password')
             if(!user)return res.status(400).json({msg:"User does not exist. "})
             res.json(user)    
         }
         catch(err){
             return res.status(500).json({msg:err.message})
         }
+    },
+    addCart: async(req,res)=>{
+        try{
+            const user = await Users.findById(req.user.id)
+            if(!user) return res.status(400).json({msg:"User does not exist " })
+            await Users.findOneAndUpdate({_id:req.user.id},{
+                cart:req.body.cart
+            })
+            return res.json({msg:"Add to cart"})
+        }
+        catch(err){
+             return res.status(500).json({msg:err.message}) 
+        }
+    },
+    history: async(req,res)=>{
+        try{
+            const history = await Payments.find({user_id:req.user.id})
+            //console.log(history)
+            res.json(history)
+        }
+        catch(err){
+            return res.status(500).json({msg:err.message})
+        }
     }
-
-
 }
 const createAccessToken = (user)=>{
     return jwt.sign(user,process.env.ACCESS_TOKEN_SECRET,{expiresIn:'1d'})

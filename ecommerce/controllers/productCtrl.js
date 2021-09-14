@@ -8,15 +8,16 @@ class APIfeatures{
 
     }
     filtering(){
+        //console.log(this.queryString)
         const queryObj = {...this.queryString} 
-        console.log({before:queryObj})//before delete page
+        //console.log({before:queryObj})//before delete page
         const excludeFields = ['page','sort','limit']
         excludeFields.forEach(e1=>delete(queryObj[e1]))
-        console.log({after:queryObj}) //after delete page
+        //console.log({after:queryObj}) //after delete page
         let queryStr = JSON.stringify(queryObj)
-    
+        
         queryStr = queryStr.replace(/\b(gte|gt|lt|lte|regex)\b/g,match=> '$' + match)
-        console.log({queryObj,queryStr})
+        //console.log(JSON.parse(queryStr))
     
         this.query.find(JSON.parse(queryStr))
         
@@ -25,7 +26,7 @@ class APIfeatures{
     sorting(){
         if(this.queryString.sort){
             const sortBy = this.queryString.sort.split(',').join(' ')
-            console.log(sortBy)
+            //console.log(sortBy)
             this.query = this.query.sort(sortBy)
         }
         else{
@@ -36,7 +37,7 @@ class APIfeatures{
     }
     paginating(){
         const page = this.queryString.page * 1 || 1
-        const limit = this.queryString.limit * 1 || 6
+        const limit = this.queryString.limit * 1 || 2
         const skip = (page-1)*limit;
         this.query = this.query.skip(skip).limit(limit)
 
@@ -46,7 +47,7 @@ class APIfeatures{
 const productCtrl = {
     getProduct:async(req,res)=>{
         try{
-            console.log(req.query)
+            //console.log(req.query)
             const features = new APIfeatures(Products.find(),req.query).filtering().sorting().paginating()
             const products = await features.query
             res.json({

@@ -12,7 +12,7 @@ cloudinary.config({
 //Upload image only admin can upload image
 router.post('/upload',(req,res)=>{
     try{
-        console.log(req.files)
+        //console.log(req.files)
         if(!req.files|| Object.keys(req.files).length===0)return  res.status(400).json({msg:'No file uploaded. '})
         //res.json({msg:"upload file"})
         const file = req.files.file;
