@@ -20,9 +20,7 @@ mongoose.connect(URI, err => {
     if(err) throw err;
     console.log('Connected to MongoDB!!!')
  })
-app.get('/',(req,res)=>{
-    res.json({msg:"Welecome to serve"})
-})
+
 app.use('/user',require('./Routes/userRoutes'))
 app.use('/api',require('./Routes/categoryRoute'))
 app.use('/api',require('./Routes/upload'))
