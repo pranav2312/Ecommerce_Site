@@ -17,14 +17,12 @@ const paymentCtrl = {
         try{
             const user =await Users.findById(req.user.id).select('name email')
             if(!user) return res.status(400).json({msg:"User does not exists."})
-            const {cart,paymentID,address}  = req.body;
+            const {description,ID,sold}  = req.body;
             const {_id, name, email} = user;
             const newPayment = new Payments({
-                user_id:_id,name,email,cart,paymentID,address
+                user_id:_id,name,email,ID,description
             })
-            cart.filter(item=>{
-                return sold(item._id,item.quantity,item.sold)
-            })
+            sold(ID,sold)
             await newPayment.save()
 
             res.json({msg:"Payment Success!"})
@@ -34,9 +32,9 @@ const paymentCtrl = {
         }
     }
 }
-const sold = async(id,quantity,oldSold)=>{
+const sold = async(id,sold)=>{
     await Products.findOneAndUpdate({_id:id},{
-        sold:quantity+oldSold
+        sold:sold+1
     })
 }
 module.exports = paymentCtrl 

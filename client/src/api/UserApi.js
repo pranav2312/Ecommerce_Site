@@ -28,20 +28,20 @@ function UserApi(token) {
         }
     },[token])
 
-      const addCart = async(product)=>{
+      const addCart = async(service)=>{
         if(!isLogged) return alert("Please login  to continue buying")
         const check = cart.every(item=>{
-            return item._id !== product._id
+            return item._id !== service._id
         })
         if(check){
-            setCart([...cart,{...product,quantity:1}])
-            await axios.patch('/user/addcart',{cart: [...cart,{...product,quantity:1}]},{
+            setCart([...cart,{...service,quantity:1}])
+            await axios.patch('/user/addcart',{cart: [...cart,{...service,quantity:1}]},{
                 headers:{Authorization:token}
             })
-            alert("This Product add to cart. ")
+            alert("This service add to cart. ")
         }
         else {
-            alert("This product has been added to cart. ")
+            alert("This service has been added to cart. ")
         }
 
     }

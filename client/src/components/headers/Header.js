@@ -16,7 +16,7 @@ export default function Header() {
     const adminRouter = () => {
         return (
             <>
-                <li><Link to="/create_product">create Product</Link></li>
+                <li><Link to="/create_product">create Service</Link></li>
                 <li><Link to="/category" >Categories</Link></li>
             </>
         )
@@ -46,10 +46,10 @@ export default function Header() {
 
             </div>
             <div className="logo">
-                <h1><Link to="/">{isAdmin ? 'Admin' : 'EaST SHop'}</Link></h1>
+                <h1><Link to="/">{isAdmin ? 'Admin' : 'EaSTZone service'}</Link></h1>
             </div>
             <ul style={styleMenu} >
-                <li><Link to="/">{isAdmin ? 'Products' : 'Shop'}</Link></li>
+                <li><Link to="/">{isAdmin ? 'Services' : 'Services'}</Link></li>
                 {isAdmin && adminRouter()}
                 {
                     isLogged ? loggedRouter() : <li><Link to="/login">Login / Register</Link></li>

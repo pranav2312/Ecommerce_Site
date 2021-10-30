@@ -2,7 +2,7 @@ import axios from 'axios'
 import React from 'react'
 //import { Link } from 'react-router-dom'
 import BtnRender from './BtnRender'
-function ProductItem({product, isAdmin,deleteProduct, handleCheck}) {
+function ProductItem({product, isAdmin,deleteProduct, handleCheck,addcountService}) {
   
     return (
         <div className="product_card">
@@ -13,10 +13,10 @@ function ProductItem({product, isAdmin,deleteProduct, handleCheck}) {
             <img src={product.images.url} alt="" />
             <div className="product_box">
                 <h2 title={product.title}>{product.title}</h2>
-                <span>${product.price}</span>
+                
                 <p>{product.description}</p>
                 <div className="row_btn">
-                <BtnRender product={product} deleteProduct={deleteProduct} />
+                <BtnRender product={product} deleteProduct={deleteProduct} addcountService={addcountService} />
                 </div>
             </div>
         </div>
