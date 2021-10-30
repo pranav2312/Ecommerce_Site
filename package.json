@@ -6,14 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start":"node server.js",
-    "server":"nodemon server.js",
+    "start": "node server.js",
+    "server": "nodemon server.js",
     "client": "cd client && npm run start",
-    "server-install":"npm install",
-    "client-install":"cd client && npm install",
-    "install-all":"concurrently \"npm run server-install\" \"npm run client-install\"",
-    "heroku-postbuild":"cd client && npm install && npm run build"
-    
+    "server-install": "npm install",
+    "client-install": "cd client && npm install",
+    "install-all": "concurrently \"npm run server-install\" \"npm run client-install\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -31,6 +30,6 @@
     "mongoose": "^6.0.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.14"
   }
 }

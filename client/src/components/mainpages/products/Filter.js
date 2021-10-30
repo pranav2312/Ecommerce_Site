@@ -19,7 +19,7 @@ function Filter() {
                 <span>
                     Filters:
                 </span>
-                <select name="category" value={category} onChange={handleCategory}><option value="">All product</option>
+                <select name="category" value={category} onChange={handleCategory}><option value="">All Services</option>
                     {
                         categories.map(category => (
                             <option value={"category=" + category._id} key={category._id}>
@@ -38,9 +38,8 @@ function Filter() {
                 <select value={sort} onChange={e=>setSort(e.target.value)}>
                     <option value="">Newest</option>
                     <option value="sort=oldest">Oldest</option>
-                    <option value="sort=-sold">Best Sales</option>
-                    <option value="sort=-price">Price: High-Low</option>
-                    <option value="sort=price">Price: Low-High</option>
+                    <option value="sort=-sold">Best Provider</option>
+                    
                     
                 </select>
 

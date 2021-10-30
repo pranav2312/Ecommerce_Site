@@ -13,7 +13,7 @@ function Products(params) {
     const [callback, setCallback] = state.ProductsApi.callback
     const [loading, setLoading] = useState(false)
     const [isCheck, setIsCheck] = useState(false)
-
+    const [count,setCount] = useState(0)
     const handleCheck = (id) =>{
         products.forEach(product => {
             if(product._id === id) product.checked = !product.checked
@@ -39,7 +39,9 @@ function Products(params) {
             alert(err.response.data.msg)
         }
     }
-
+    const addcountService = async(id) =>{
+        
+    }
     const checkAll = () =>{
         products.forEach(product => {
             product.checked = !isCheck
@@ -72,7 +74,7 @@ function Products(params) {
             {
                 products.map(product => {
                     return <ProductItem key={product._id} product={product}
-                    isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />
+                    isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} addcountService={addcountService} />
                 })
             } 
         </div>

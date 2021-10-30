@@ -62,7 +62,7 @@ const userCtrl = {
             return res.json({msg:"Logeed out"})
         }
         catch(err){
-
+            return res.status(500).json({msg:err.message}) 
         }
     },
     refreshToken: (req,res)=>{
@@ -79,7 +79,7 @@ const userCtrl = {
             res.json({rf_token})
         }
         catch(err){
-
+            return res.status(500).json({msg:err.message}) 
         }
       
     },

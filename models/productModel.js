@@ -11,11 +11,6 @@ const productschema = new mongoose.Schema({
         trim:true,
         required:true
     },
-    price:{
-        type:Number,
-        trim:true,
-        required:true
-    },
     description:{
         type:String,
         trim:true,
@@ -46,7 +41,16 @@ const productschema = new mongoose.Schema({
     sold:{
         type:Number,
         default:0
-    }
+    },
+    email:{
+        type:String,
+
+    },
+    mobileno:{
+        type:String,
+
+    },
+   
 
 },{
     timestamps:true

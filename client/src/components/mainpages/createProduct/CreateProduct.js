@@ -9,8 +9,10 @@ const initialState = {
     title: '',
     price: 0,
     description: 'How to and tutorial videos of cool CSS effect, Web Design ideas,JavaScript libraries, Node.',
-    content: 'Welcome to our channel Dev AT. Here you can learn web designing, UI/UX designing, html css tutorials, css animations and css effects, javascript and jquery tutorials and related so on.',
+    content: ' Here you can learn web designing, UI/UX designing, html css tutorials, css animations and css effects, javascript and jquery tutorials and related so on.',
     category: '',
+    email:'xyz@gmail.com',
+    mobileno:'123456789',
     _id: ''
 }
 
@@ -138,7 +140,7 @@ function CreateProduct() {
 
             <form onSubmit={handleSubmit}>
                 <div className="row">
-                    <label htmlFor="product_id">Product ID</label>
+                    <label htmlFor="product_id">Service ID</label>
                     <input type="text" name="product_id" id="product_id" required
                     value={product.product_id} onChange={handleChangeInput} disabled={onEdit} />
                 </div>
@@ -149,11 +151,11 @@ function CreateProduct() {
                     value={product.title} onChange={handleChangeInput} />
                 </div>
 
-                <div className="row">
+                {/* <div className="row">
                     <label htmlFor="price">Price</label>
                     <input type="number" name="price" id="price" required
                     value={product.price} onChange={handleChangeInput} />
-                </div>
+                </div> */}
 
                 <div className="row">
                     <label htmlFor="description">Description</label>
@@ -166,7 +168,16 @@ function CreateProduct() {
                     <textarea type="text" name="content" id="content" required
                     value={product.content} rows="7" onChange={handleChangeInput} />
                 </div>
-
+                <div className="row">
+                    <label htmlFor="email">email</label>
+                    <input type="email" name="email" id="email" required
+                    value={product.email}  onChange={handleChangeInput} />
+                </div>
+                <div className="row">
+                    <label htmlFor="mobileno">Phone No.</label>
+                    <input type="text" name="mobileno" id="mobileno" required
+                    value={product.mobileno}  onChange={handleChangeInput} />
+                </div>
                 <div className="row">
                     <label htmlFor="categories">Categories: </label>
                     <select name="category" value={product.category} onChange={handleChangeInput} >
