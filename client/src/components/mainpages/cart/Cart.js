@@ -56,7 +56,6 @@ function Cart() {
         addToCart(cart)
     }
     const RequestSuccess = async (service) => {
-        console.log(cart)
         const {ID,sold} = service
         await axios.post('/api/payment', {description,ID,sold}, {
             headers: { Authorization: token }
@@ -93,7 +92,7 @@ function Cart() {
             {
                 cart.map(Services => (
                     <>
-                    {console.log(Services)}
+                    
                         <div className="detail cart" key={Services._id}>
 
                             <img src={Services.images.url} alt="" className="img_container" />

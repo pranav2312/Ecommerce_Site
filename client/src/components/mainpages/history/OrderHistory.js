@@ -38,19 +38,19 @@ function OrderHistory() {
             getHistory()
         }
     },[token, isAdmin, setHistory])
-    const findSold=()=>{
-        setVal(0);
-        categories.forEach(item => {
-            setVal(0);
-             products.forEach(element=>{
-                if(element.category === item._id){
-                    setVal(val+1);
-                }
-             })
-             setSold(sold=>[...sold,val])   
-        });
-        console.log(sold)
-    }
+    // const findSold=()=>{
+    //     setVal(0);
+    //     categories.forEach(item => {
+    //         setVal(0);
+    //          products.forEach(element=>{
+    //             if(element.category === item._id){
+    //                 setVal(val+1);
+    //             }
+    //          })
+    //          setSold(sold=>[...sold,val])   
+    //     });
+    //     console.log(sold)
+    // }
    
 
     
