@@ -34,7 +34,7 @@ function Cart() {
         const value = e.target.value
         setDescription(value)
     }
-   
+
     const removeServices = (id) => {
         if (window.confirm("Do you realy want to remove this Services from your cart?")) {
             cart.forEach((item, index) => {
@@ -47,6 +47,7 @@ function Cart() {
         addToCart(cart)
     }
     const RequestSuccess = async (service) => {
+
         const {ID,sold} = service
         await axios.post('/api/payment', {description,ID,sold}, {
             headers: { Authorization: token }
@@ -83,7 +84,7 @@ function Cart() {
             {
                 cart.map(Services => (
                     <>
-                    
+
                         <div className="detail cart" key={Services._id}>
 
                             <img src={Services.images.url} alt="" className="img_container" />

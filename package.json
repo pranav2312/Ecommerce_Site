@@ -44,8 +44,10 @@
     "react-hammerjs": "^1.0.1"
   },
   "devDependencies": {
+
     "nodemon": "^2.0.12",
     "react-addons-perf": "^15.4.2",
     "react-perf-tool": "^0.2.3"
+
   }
 }

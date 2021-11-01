@@ -21,14 +21,16 @@ const paymentCtrl = {
         try{
             const user =await Users.findById(req.user.id).select('name email')
             if(!user) return res.status(400).json({msg:"User does not exists."})
-            console.log(user)
+
             const {description,ID,sold}  = req.body;
             const {_id, name, email} = user;
             const newPayment = new Payments({
                 user_id:_id,name,email,ID,description
             })
+
             
             Updatesold(ID,sold)
+
             await newPayment.save()
 
             res.json({msg:"Payment Success!"})
@@ -37,6 +39,12 @@ const paymentCtrl = {
             return res.status(500).json({msg:err.message})
         }
     }
+}
+
+const Updatesold = async(id,sold)=>{
+    await Products.findOneAndUpdate({_id:id},{
+        sold:sold+1
+    })
 }
 
 module.exports = paymentCtrl 

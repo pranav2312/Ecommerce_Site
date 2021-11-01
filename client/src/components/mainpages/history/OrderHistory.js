@@ -38,6 +38,7 @@ function OrderHistory() {
             getHistory()
         }
     },[token, isAdmin, setHistory])
+
     // const findSold=()=>{
     //     setVal(0);
     //     categories.forEach(item => {
@@ -51,7 +52,7 @@ function OrderHistory() {
     //     });
     //     console.log(sold)
     // }
-   
+
 
     
     return (
