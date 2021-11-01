@@ -34,16 +34,7 @@ function Cart() {
         const value = e.target.value
         setDescription(value)
     }
-    // const decrement = async (id) => {
-    //     cart.forEach(item => {
-    //         if (item._id === id) {
-    //             if (item.quantity > 0)
-    //                 item.quantity -= 1
-    //         }
-    //     });
-    //     setCart([...cart])
-    //     addToCart(cart)
-    // }
+   
     const removeServices = (id) => {
         if (window.confirm("Do you realy want to remove this Services from your cart?")) {
             cart.forEach((item, index) => {
