@@ -41,10 +41,5 @@ const paymentCtrl = {
     }
 }
 
-const Updatesold = async(id,sold)=>{
-    await Products.findOneAndUpdate({_id:id},{
-        sold:sold+1
-    })
-}
 
 module.exports = paymentCtrl 
