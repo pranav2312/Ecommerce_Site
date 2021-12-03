@@ -10,7 +10,7 @@ function Login() {
         setUser({...user,[name]:value})
     }
     const loginSubmit = async(e)=>{
-        e.preventDefault()
+         e.preventDefault()
         try{
             await axios.post('/user/login',{...user})
            localStorage.setItem('firstlogin',true)
