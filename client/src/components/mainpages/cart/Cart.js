@@ -30,7 +30,7 @@ function Cart() {
     //     addToCart(cart)
     // }
     const handleChangeInput = e =>{
-        console.log(description)
+        //console.log(description)
         const value = e.target.value
         setDescription(value)
     }
@@ -51,7 +51,7 @@ function Cart() {
         await axios.post('/api/payment', {description,ID,sold}, {
             headers: { Authorization: token }
         })
-        console.log(cart)
+        //console.log(cart)
         cart.forEach((item, index) => {
             if (item._id === ID) {
                 cart.splice(index, 1)

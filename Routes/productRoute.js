@@ -8,5 +8,5 @@ router.route('/products')
 router.route('/products/:id')
 .delete(productCtrl.deleteProduct)
 .put(productCtrl.updateProduct)
-
+router.get('/recommand',auth,productCtrl.recommand)
 module.exports = router

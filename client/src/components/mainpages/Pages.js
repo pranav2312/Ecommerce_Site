@@ -11,6 +11,7 @@ import OrderHistory from './history/OrderHistory';
 import OrderDetails from './history/OrderDetails';
 import Categories from './categories/Categories';
 import CreateProduct from './createProduct/CreateProduct';
+import Recommand from './products/Recommand';
 export default function Pages(){
     const state = useContext(GlobalState)
     const [isLogged] = state.UserApi.isLogged
@@ -19,7 +20,7 @@ export default function Pages(){
         <Switch>
             <Route path="/" exact component={Products}/>
             <Route path="/details/:id" exact component={DetailProduct}/>
-            
+            <Route path="/recomand" exact component={Recommand}/>
             <Route path="/login" exact component={isLogged? Notfound :  Login}/>
             <Route path="/register" exact component={isLogged? Notfound :  Register }/>
             <Route path="/category" exact component={!isAdmin? Notfound :  Categories }/>

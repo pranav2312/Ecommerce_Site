@@ -34,7 +34,9 @@ export default function Header() {
     const loggedRouter = () => {
         return (
             <>
+                <li><Link to="/recomand">recomand</Link></li>
                 <li><Link to="/history">History</Link></li>
+                
                 <li><Link to="/" onClick={logoutuser}>LogOut</Link></li>
             </>
         )
@@ -52,7 +54,7 @@ export default function Header() {
                 <li><Link to="/">{isAdmin ? 'Services' : 'Services'}</Link></li>
                 {isAdmin && adminRouter()}
                 {
-                    isLogged ? loggedRouter() : <li><Link to="/login">Login / Register</Link></li>
+                    isLogged ? loggedRouter() : <><li><Link to="/login">Login / Register</Link></li></>
 
                 }
                 <li onClick={()=>setMenu(!menu)}>

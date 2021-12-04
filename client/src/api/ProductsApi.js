@@ -1,6 +1,8 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect, useContext} from 'react'
 import axios from 'axios'
+import { GlobalState } from '../GlobalState'
 function ProductsApi() {
+    
     const [products, setProducts] = useState([])
     const [callback, setCallback] = useState(false)
     const [category, setCategory] = useState('')
@@ -8,11 +10,13 @@ function ProductsApi() {
     const [search, setSearch] = useState('')
     const [page, setPage] = useState(1)
     const [result, setResult] = useState(0)
-
+    
     useEffect(() =>{
         const getProducts = async () => {
             //console.log(category)
-            const res = await axios.get(`/api/products?limit=${page*9}&${category}&${sort}&title[regex]=${search}`)
+            const res = await axios.get(`/api/products?limit=${page*9}&${category}&${sort}&title[regex]=${search}`, {
+               
+            })
             //console.log(res)
             setProducts(res.data.products)
             setResult(res.data.result)

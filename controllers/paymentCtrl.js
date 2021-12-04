@@ -1,11 +1,11 @@
 const Payments = require('../models/paymentModel')
 const Users = require('../models/userModules')
 const Products = require('../models/productModel')
-const Updatesold = async(ID,sold)=>{
-    await Products.findOneAndUpdate({_id:ID},{
-        sold:sold+1
-    })
-}
+// const Updatesold = async(ID,sold)=>{
+//     await Products.findOneAndUpdate({_id:ID},{
+//         sold:sold+1
+//     })
+// }
 const paymentCtrl = {
     getPayments: async(req,res)=>{
         try{
@@ -28,7 +28,7 @@ const paymentCtrl = {
                 user_id:_id,name,email,ID,description
             })
             
-            Updatesold(ID,sold)
+           // Updatesold(ID,sold)
             await newPayment.save()
 
             res.json({msg:"Payment Success!"})
